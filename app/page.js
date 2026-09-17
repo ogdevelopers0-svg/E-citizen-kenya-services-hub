@@ -17,7 +17,6 @@ import {
   Home,
   BriefcaseBusiness,
   Heart,
-  ArrowRight,
   ShieldCheck,
   Info,
   CheckCircle2
@@ -473,7 +472,8 @@ export default function HomePage() {
     <span>
       Independent website · Not the official eCitizen portal
     </span>
-  </div>
+    </div>
 </footer>
+    </main>
   );
 }
