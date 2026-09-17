@@ -53,15 +53,12 @@ export default function ContactPage() {
             platform.
           </p>
 
-          <button
-            className="official-button"
-            onClick={() => {
-              window.location.href =
-                "https://accounts.ecitizen.go.ke/en";
-            }}
-          >
-            Visit Official eCitizen
-          </button>
+          <a
+  className="official-button"
+  href="https://accounts.ecitizen.go.ke/en"
+>
+  Visit Official eCitizen
+</a>
         </section>
 
         <section>
