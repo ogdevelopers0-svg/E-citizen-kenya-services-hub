@@ -8,6 +8,7 @@ import {
   Accessibility,
   Menu,
   X,
+  ArrowRight,
   Smartphone,
   IdCard,
   FileText,
@@ -464,7 +465,7 @@ export default function HomePage() {
     </div>
   </div>
 
-  <div className="footer-bottom">
+    <div className="footer-bottom">
     <span>
       © {new Date().getFullYear()} E-CITIZEN Kenya Services Hub
     </span>
@@ -474,3 +475,5 @@ export default function HomePage() {
     </span>
   </div>
 </footer>
+  );
+}
