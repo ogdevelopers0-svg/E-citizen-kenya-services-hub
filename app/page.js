@@ -430,15 +430,47 @@ export default function HomePage() {
         </div>
       </section>
 
-      <footer>
-        <span>
-          © {new Date().getFullYear()} E-CITIZEN Kenya Services Hub
-        </span>
+     <footer className="site-footer">
+  <div className="footer-inner">
+    <div className="footer-brand">
+      <strong>E-CITIZEN Kenya Services Hub</strong>
 
-        <button onClick={goToOfficial}>
-          Official eCitizen portal
-        </button>
-      </footer>
-    </main>
-  );
-}
+      <p>
+        An independent information and service-discovery hub
+        for Kenyan government services.
+      </p>
+    </div>
+
+    <div className="footer-links">
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/terms">Terms of Use</a>
+      <a href="/disclaimer">Disclaimer</a>
+    </div>
+
+    <div className="footer-official">
+      <p>
+        Need to complete a government service?
+      </p>
+
+      <a
+        href="https://accounts.ecitizen.go.ke/en"
+        className="official-footer-link"
+      >
+        Visit Official eCitizen
+        <ArrowRight size={16} />
+      </a>
+    </div>
+  </div>
+
+  <div className="footer-bottom">
+    <span>
+      © {new Date().getFullYear()} E-CITIZEN Kenya Services Hub
+    </span>
+
+    <span>
+      Independent website · Not the official eCitizen portal
+    </span>
+  </div>
+</footer>
