@@ -26,15 +26,13 @@ const ECITIZEN_URL = "https://accounts.ecitizen.go.ke/en";
 
 const services = [
   {
-    title: <>Apply for<br />a Passport</>,
-    name: "Passport",
-    icon: Smartphone,
-    keywords: "passport travel immigration",
-    description:
-      
-  },description:
-  "A Kenyan passport is an official travel document issued to Kenyan citizens for international travel. This guide provides general information about passport applications, the purpose of a passport, and the online service process. Applicants should review the current requirements and instructions provided through the official eCitizen platform before starting an application. The official service may provide information about application details, supporting documents, fees, appointments, and collection procedures.",
-  {
+  title: <>Apply for a<br />Passport</>,
+  name: "Passport",
+  icon: Smartphone,
+  keywords: "passport travel immigration",
+  description:
+    "A Kenyan passport is an official travel document issued to Kenyan citizens for international travel. This guide provides general information about passport applications, the purpose of a passport, and the online service process. Applicants should review the current requirements and instructions provided through the official eCitizen platform before starting an application. The official service may provide information about application details, supporting documents, fees, appointments, and collection procedures.",
+},
     title: <>Apply for a<br />Driving License</>,
     name: "Driving Licence",
     icon: IdCard,
