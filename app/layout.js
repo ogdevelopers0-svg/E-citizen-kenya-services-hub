@@ -15,10 +15,7 @@ export default function RootLayout({ children }) {
     content="ca-pub-4573252775101941"
   />
 
-  <meta
-    name="juicyads-site-verification"
-    content="09431bcfcf145b4c745accc269748707"
-  />
+  <meta name="juicyads-site-verification" content="b91c92061b1df7c149ca5e3d2fcdc501">
 
   <Script
     async
