@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Script from "next/script";
 
 import {
   Search,
@@ -19,27 +20,27 @@ import {
   Heart,
   ShieldCheck,
   Info,
-  CheckCircle2
+  CheckCircle2,
 } from "lucide-react";
 
 const ECITIZEN_URL = "https://accounts.ecitizen.go.ke/en";
 
 const services = [
   {
-  title: <>Apply for a<br />Passport</>,
-  name: "Passport",
-  icon: Smartphone,
-  keywords: "passport travel immigration",
-  description:
-    "A Kenyan passport is an official travel document issued to Kenyan citizens for international travel. This guide provides general information about passport applications, the purpose of a passport, and the online service process. Applicants should review the current requirements and instructions provided through the official eCitizen platform before starting an application. The official service may provide information about application details, supporting documents, fees, appointments, and collection procedures.",
+    title: <>Apply for a<br />Passport</>,
+    name: "Passport",
+    icon: Smartphone,
+    keywords: "passport travel immigration",
+    description:
+      "A Kenyan passport is an official travel document issued to Kenyan citizens for international travel. This guide provides general information about passport applications, the purpose of a passport, and the online service process. Applicants should review the current requirements and instructions provided through the official eCitizen platform before starting an application. The official service may provide information about application details, supporting documents, fees, appointments, and collection procedures.",
   },
-  {      
+  {
     title: <>Apply for a<br />Driving License</>,
     name: "Driving Licence",
     icon: IdCard,
     keywords: "driving license ntsa",
     description:
-  "A Kenyan driving licence is an official document authorizing a person to drive a motor vehicle of a specified class on public roads. Driving-licence services available through the government platform include licensing, provisional driving licences, driving-test booking, renewal, class endorsement and replacement of duplicate licences. Applicants should check the current requirements, applicable fees and instructions provided by the National Transport and Safety Authority through the official eCitizen platform before starting an application.",
+      "A Kenyan driving licence is an official document authorizing a person to drive a motor vehicle of a specified class on public roads. Driving-licence services available through the government platform include licensing, provisional driving licences, driving-test booking, renewal, class endorsement and replacement of duplicate licences. Applicants should check the current requirements, applicable fees and instructions provided by the National Transport and Safety Authority through the official eCitizen platform before starting an application.",
   },
   {
     title: <>KRA<br />Services</>,
@@ -47,7 +48,7 @@ const services = [
     icon: FileText,
     keywords: "kra tax revenue pin",
     description:
-  "Kenya Revenue Authority (KRA) provides online tax services for individuals and businesses. These services include KRA PIN registration, filing tax returns, checking PIN details, applying for or checking a Tax Compliance Certificate, and accessing other tax-related services. The iTax system provides online self-service options, while KRA also publishes guides to help taxpayers complete different processes. Applicants and taxpayers should check the latest requirements, applicable obligations and instructions from KRA before proceeding through the official government service platform.",
+      "Kenya Revenue Authority (KRA) provides online tax services for individuals and businesses. These services include KRA PIN registration, filing tax returns, checking PIN details, applying for or checking a Tax Compliance Certificate, and accessing other tax-related services. The iTax system provides online self-service options, while KRA also publishes guides to help taxpayers complete different processes. Applicants and taxpayers should check the latest requirements, applicable obligations and instructions from KRA before proceeding through the official government service platform.",
   },
   {
     title: <>Apply for a<br />Birth Certificate</>,
@@ -55,16 +56,15 @@ const services = [
     icon: Users,
     keywords: "birth certificate civil registration",
     description:
-  "A Kenyan birth certificate is an official civil-registration document that records a person's birth and helps establish legal identity. The Civil Registration Services provides online birth-registration services through eCitizen, including applications for birth certificates and late birth certificates. For births reported more than six months after the date of occurrence, the late birth-registration process applies. Applicants should check the current requirements, supporting information, fees and instructions from Civil Registration Services before submitting an application.",
+      "A Kenyan birth certificate is an official civil-registration document that records a person's birth and helps establish legal identity. The Civil Registration Services provides online birth-registration services through eCitizen, including applications for birth certificates and late birth certificates. For births reported more than six months after the date of occurrence, the late birth-registration process applies. Applicants should check the current requirements, supporting information, fees and instructions from Civil Registration Services before submitting an application.",
   },
   {
     title: <>Apply for<br />Certificate<br />of Good Conduct</>,
     name: "Certificate of Good Conduct",
     icon: Award,
     keywords: "good conduct police certificate",
-   description:
-  "A Certificate of Good Conduct, also known as a Police Clearance Certificate, is issued to applicants following a background check by the Directorate of Criminal Investigations (DCI). It is commonly required for purposes such as employment, immigration, licensing and other official processes. Applications and related instructions are available through the official eCitizen platform. Applicants should check the latest requirements, applicable fees and collection instructions before submitting an application.", description:
-      "A Certificate of Good Conduct is commonly requested for employment, immigration and other formal purposes."
+    description:
+      "A Certificate of Good Conduct, also known as a Police Clearance Certificate, is issued to applicants following a background check by the Directorate of Criminal Investigations (DCI). It is commonly required for purposes such as employment, immigration, licensing and other official processes. Applications and related instructions are available through the official eCitizen platform. Applicants should check the latest requirements, applicable fees and collection instructions before submitting an application.",
   },
   {
     title: <>Save for<br />Affordable<br />Housing</>,
@@ -72,7 +72,7 @@ const services = [
     icon: Home,
     keywords: "affordable housing boma yangu",
     description:
-  "Kenya's affordable housing services provide information and access to government housing programmes and related services. Depending on the programme, applicants may be able to register, check eligibility or access information about available housing opportunities through official government platforms. Requirements and procedures can vary by programme and may change over time, so applicants should review the latest information and instructions provided through the official eCitizen platform before proceeding.",
+      "Kenya's affordable housing services provide information and access to government housing programmes and related services. Depending on the programme, applicants may be able to register, check eligibility or access information about available housing opportunities through official government platforms. Requirements and procedures can vary by programme, so applicants should review the latest information and instructions provided through the official eCitizen platform before proceeding.",
   },
   {
     title: <>Register a<br />Business</>,
@@ -80,7 +80,7 @@ const services = [
     icon: BriefcaseBusiness,
     keywords: "business registration company",
     description:
-  "Government business services help individuals and organizations complete business-related registrations and access official services online. Depending on the service, users may be able to register a business, obtain or manage business records, and access other government requirements through the eCitizen platform. Procedures, supporting documents and applicable fees can vary depending on the type of business and service, so applicants should check the latest official requirements before proceeding.",
+      "Government business services help individuals and organizations complete business-related registrations and access official services online. Depending on the service, users may be able to register a business, obtain or manage business records, and access other government requirements through the eCitizen platform. Procedures, supporting documents and applicable fees can vary depending on the type of business and service, so applicants should check the latest official requirements before proceeding.",
   },
   {
     title: <>Apply for a<br />Marriage Certificate</>,
@@ -88,8 +88,8 @@ const services = [
     icon: Heart,
     keywords: "marriage certificate",
     description:
-  "A Kenyan marriage certificate is an official document that records a legally registered marriage. Marriage registration services allow eligible couples to access information and apply for relevant marriage-related services through official government channels. The applicable process can depend on the type of marriage and the circumstances of the applicants. Users should check the latest requirements, supporting documents, fees and instructions provided through the official eCitizen platform before submitting an application.",
-  }
+      "A Kenyan marriage certificate is an official document that records a legally registered marriage. Marriage registration services allow eligible couples to access information and apply for relevant marriage-related services through official government channels. The applicable process can depend on the type of marriage and the circumstances of the applicants. Users should check the latest requirements, supporting documents, fees and instructions provided through the official eCitizen platform before submitting an application.",
+  },
 ];
 
 function goToOfficial() {
@@ -110,6 +110,51 @@ function KenyaMark() {
         <span className="hub-ring">●</span>
         <span className="hub-name">E-CITIZEN</span>
       </div>
+    </div>
+  );
+}
+
+function JuicyAdsBanner() {
+  return (
+    <div
+      style={{
+        width: "100%",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        padding: "18px 12px",
+        background: "#ffffff",
+        overflow: "hidden",
+      }}
+    >
+      <div
+        style={{
+          width: "908px",
+          maxWidth: "100%",
+          minHeight: "258px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          overflow: "hidden",
+        }}
+      >
+        <ins
+          id="1127412"
+          data-width="908"
+          data-height="258"
+        />
+      </div>
+
+      <Script
+        src="https://poweredby.jads.co/js/jads.js"
+        strategy="afterInteractive"
+        async
+        data-cfasync="false"
+      />
+
+      <Script id="juicyads-zone-1127412" strategy="afterInteractive">
+        {`(adsbyjuicy = window.adsbyjuicy || []).push({'adzone':1127412});`}
+      </Script>
     </div>
   );
 }
@@ -210,6 +255,9 @@ export default function HomePage() {
         </div>
       </header>
 
+      {/* JUICYADS BANNER */}
+      <JuicyAdsBanner />
+
       <section id="home" className="hero">
         <div className="hero-image" />
         <div className="hero-overlay" />
@@ -270,7 +318,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ORIGINAL INFORMATION SECTION */}
+      {/* INFORMATION SECTION */}
       <section className="intro-section" id="about">
         <div className="content-container">
           <div className="section-label">
@@ -431,50 +479,50 @@ export default function HomePage() {
         </div>
       </section>
 
-     <footer className="site-footer">
-  <div className="footer-inner">
-    <div className="footer-brand">
-      <strong>E-CITIZEN Kenya Services Hub</strong>
+      <footer className="site-footer">
+        <div className="footer-inner">
+          <div className="footer-brand">
+            <strong>E-CITIZEN Kenya Services Hub</strong>
 
-      <p>
-        An independent information and service-discovery hub
-        for Kenyan government services.
-      </p>
-    </div>
+            <p>
+              An independent information and service-discovery hub
+              for Kenyan government services.
+            </p>
+          </div>
 
-    <div className="footer-links">
-      <a href="/about">About</a>
-      <a href="/contact">Contact</a>
-      <a href="/privacy">Privacy Policy</a>
-      <a href="/terms">Terms of Use</a>
-      <a href="/disclaimer">Disclaimer</a>
-    </div>
+          <div className="footer-links">
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+            <a href="/privacy">Privacy Policy</a>
+            <a href="/terms">Terms of Use</a>
+            <a href="/disclaimer">Disclaimer</a>
+          </div>
 
-    <div className="footer-official">
-      <p>
-        Need to complete a government service?
-      </p>
+          <div className="footer-official">
+            <p>
+              Need to complete a government service?
+            </p>
 
-      <a
-        href="https://accounts.ecitizen.go.ke/en"
-        className="official-footer-link"
-      >
-        Visit Official eCitizen
-        <ArrowRight size={16} />
-      </a>
-    </div>
-  </div>
+            <a
+              href="https://accounts.ecitizen.go.ke/en"
+              className="official-footer-link"
+            >
+              Visit Official eCitizen
+              <ArrowRight size={16} />
+            </a>
+          </div>
+        </div>
 
-    <div className="footer-bottom">
-    <span>
-      © {new Date().getFullYear()} E-CITIZEN Kenya Services Hub
-    </span>
+        <div className="footer-bottom">
+          <span>
+            © {new Date().getFullYear()} E-CITIZEN Kenya Services Hub
+          </span>
 
-    <span>
-      Independent website · Not the official eCitizen portal
-    </span>
-    </div>
-</footer>
+          <span>
+            Independent website · Not the official eCitizen portal
+          </span>
+        </div>
+      </footer>
     </main>
   );
 }
